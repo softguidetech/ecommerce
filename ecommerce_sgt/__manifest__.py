@@ -19,11 +19,15 @@
     },
     'version': '0.1',
 
-    'depends': ['base','portal','web','website', 'website_sale','website_blog'],
+    'depends': ['base', 'portal', 'web', 'website', 'website_sale', 'website_blog'],
+    'demo': [
+        'demo/demo.xml',
+    ],
     'data': [
         'views/header.xml',
         'views/footer.xml',
         'views/home.xml',
+        'views/home_page.xml',
         'views/add_to_cart.xml',
     ],
     'application': False,

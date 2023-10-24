@@ -1,0 +1,95 @@
+<odoo>
+    <data>
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <odoo>
+            <data noupdate="1">
+                <!-- Product Category -->
+                <record id="product_category1" model="product.public.category">
+                    <field name="name">Dining</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/dining.png"/>
+                </record>
+                <record id="product_category2" model="product.public.category">
+                    <field name="name">Living</field>
+                     <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/living.png"/>
+                </record>
+                <record id="product_category3" model="product.public.category">
+                    <field name="name">Bed_room</field>
+                     <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/bedroom.png"/>
+                </record>
+
+                <!-- Product Templates -->
+                <record id="product_template_1" model="product.template">
+                    <field name="name">Syltherine</field>
+                    <!--                    <field name="description">Description for Product 1</field>-->
+                    <!--                    <field name="categ_id" ref="product_category"/>-->
+                    <field name="list_price">2.50</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/Syltherine.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_2" model="product.template">
+                    <field name="name">Laviosa</field>
+                    <field name="list_price">2.50</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/laviosa.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_3" model="product.template">
+                    <field name="name">Lolito</field>
+                    <field name="list_price">7000</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/loloto.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_4" model="product.template">
+                    <field name="name">Respira</field>
+                    <field name="list_price">500</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/respira.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_5" model="product.template">
+                    <field name="name">Grifo</field>
+                    <field name="list_price">150</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/grifo.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_6" model="product.template">
+                    <field name="name">Muggo</field>
+                    <field name="list_price">150</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/muggo.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_7" model="product.template">
+                    <field name="name">Pinky</field>
+                    <field name="list_price">7000</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/pinky.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+                <record id="product_template_8" model="product.template">
+                    <field name="name">Potty</field>
+                    <field name="list_price">150</field>
+                    <field name="standard_price">80.0</field>
+                    <field name="type">product</field>
+                    <field name="image_1920" type="base64" file="ecommerce_sgt/static/description/potty.png"/>
+                    <field name="public_categ_ids" eval="[(6, 0, [ref('product_category1')])]"/>
+                </record>
+
+
+            </data>
+        </odoo>
+
+        -->
+    </data>
+</odoo>

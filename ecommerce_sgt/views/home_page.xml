@@ -1,0 +1,531 @@
+<odoo>
+    <data>
+
+        <template id="custom_homepage" inherit_id="website.homepage" name="Home">
+            <xpath expr="//t[@t-call='website.layout']" position="replace">
+                <t t-call="website.layout">
+                    <t t-set="pageName" t-value="'homepage'"/>
+                    <div class="oe_structure"/>
+                    <section class="s_masonry_block o_colored_level pt64 pb64" data-vcss="001" data-vxml="001"
+                             data-snippet="s_masonry_block" data-name="Masonry"
+                             style="background-color: rgb(240, 237, 242); background-image: none;">
+                        <div class="container-fluid">
+                            <div class="row o_grid_mode" data-row-count="10">
+                                <div class="o_grid_item g-height-10 o_grid_item_image text-center o_colored_level g-col-lg-7 col-lg-7"
+                                     data-name="Block"
+                                     style="grid-area: 1 / 1 / 11 / 8; z-index: 1; background-image: none;">
+                                    <img src="/ecommerce_sgt/static/description/home_page1.png" alt=""
+                                         class="img img-fluid mx-auto o_we_custom_image" data-original-id="657"
+                                         data-original-src="/ecommerce_sgt/static/description/home_page1.png"
+                                         data-mimetype="image/png" data-resize-width="658" data-bs-original-title=""
+                                         title="" aria-describedby="tooltip362395" loading="lazy" style=""/>
+                                </div>
+
+
+                                <div class="o_grid_item text-center o_colored_level g-col-lg-5 o_cc o_cc2 g-height-7 col-lg-5"
+                                     data-name="Block"
+                                     style="grid-area: 3 / 8 / 10 / 13; z-index: 5; background-color: rgb(227, 217, 217); background-image: none;">
+                                    <h3 style="text-align: left;">
+                                        <span style="width: 40px;" class="oe-tabs"/>
+                                        <font class="text-black">​New Arrival</font>
+                                        <br/>
+                                    </h3>
+                                    <h1 style="text-align: left;">&amp;nbsp;
+                                        <font style="color: rgb(181, 99, 8);">
+                                            <strong>​​​&amp;nbsp; Discover Our</strong>
+                                        </font>
+                                        <br/>
+                                        <strong>
+                                            <font style="color: rgb(181, 99, 8);"><span class="oe-tabs"
+                                                                                        style="width: 40px;"/>​New
+                                                Collection
+                                            </font>
+                                        </strong>
+                                    </h1>
+                                    <p style="text-align: left;">
+                                        <strong>
+                                            <font style="color: rgb(181, 99, 8);">&amp;nbsp;
+                                                <span class="oe-tabs" style="width: 32.0333px;"/>
+                                                ​
+                                            </font>
+                                            <font style="" class="text-black">
+                                                <span style="font-weight: normal;">Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit.&amp;nbsp;
+                                                </span>
+                                            </font>
+                                        </strong>
+                                    </p>
+                                    <p style="text-align: left;">
+                                        <strong>
+                                            <font style="" class="text-black">
+                                                <span style="font-weight: normal;"><span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​
+                                                    Ut elit tellus,
+                                                </span>
+                                                <span style="font-weight: normal;">luctus
+                                                    nec ullamcorper mattis.
+                                                </span>
+                                            </font>
+                                        </strong>
+                                    </p>
+                                    <p style="text-align: left;">
+                                        <br/>
+                                        <span class="oe-tabs" style="width: 40px;"/>​
+                                    </p>
+                                </div>
+                                <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"
+                                     style="grid-area: 8 / 9 / 9 / 11; z-index: 6; background-color: rgb(181, 99, 8); background-image: none;">
+                                    <h4>
+                                        <a href="http://B" class="mb-2" data-bs-original-title="" title="">
+                                            <font class="text-o-color-4">
+                                                <strong>
+                                                    <span style="font-size: 36px;">
+                                                        <span class="oe-tabs" style="width: 30px;"/>
+                                                    </span>
+                                                </strong>
+                                                <strong>​&amp;nbsp;</strong>
+                                                <u>
+                                                    <strong>
+                                                        <span style="font-size: 18px;">
+                                                        </span>
+                                                    </strong>
+                                                </u>
+                                                <strong>&amp;nbsp; &amp;nbsp; BUY Now</strong>
+                                            </font>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="s_text_block o_colored_level pb0 pt32" data-snippet="s_text_block" data-name="Text"
+                             style="background-image: none;">
+                        <div class="s_allow_columns container">
+                            <div class="row" style="">
+                                <div class="col-lg-12 o_colored_level pt0" style="">
+                                    <h2><span class="oe-tabs" style="width: 25px;"/>​<span class="oe-tabs"
+                                                                                           style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​&amp;nbsp;
+                                        <strong>Browse The Range</strong>
+                                        <br/>
+                                    </h2>
+                                    <p><span class="oe-tabs" style="width: 25px;"/>​<span class="oe-tabs"
+                                                                                          style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​<span class="oe-tabs"
+                                                                                         style="width: 40px;"/>​&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="s_product_list o_colored_level" data-snippet="s_product_list" data-name="Items"
+                             style="background-image: none;">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-4 o_colored_level">
+                                    <a href="" data-bs-original-title="" title="">
+                                        <img src="/ecommerce_sgt/static/description/dining.png" alt=""
+                                             class="img img-fluid o_we_custom_image" data-original-id="723"
+                                             data-original-src="/ecommerce_sgt/static/description/dining.png"
+                                             data-mimetype="image/png" data-resize-width="400" height="500"/>
+                                    </a>
+                                    <div class="s_product_list_item_link">
+                                        <strong>
+                                            <span style="font-size: 24px;">Dining</span>
+                                        </strong>
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-4 o_colored_level pb0">
+                                    <a href="" data-bs-original-title="" title="">
+                                        <img src="/ecommerce_sgt/static/description/living.png" alt=""
+                                             class="img img-fluid" loading="lazy" data-original-id="449"
+                                             data-original-src="/ecommerce_sgt/static/description/living.png"
+                                             data-mimetype="image/jpeg" style="width: 85%; height: 500px;"/>
+                                    </a>
+                                    <div class="s_product_list_item_link">
+                                        <div class="d-flex">
+                                            <div class="w-100">
+                                                <strong>
+                                                    <span style="font-size: 24px;">Living</span>
+                                                </strong>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-4 o_colored_level">
+                                    <a href="" data-bs-original-title="" title="">
+                                        <img src="ecommerce_sgt/static/description/bed_room.png" alt=""
+                                             class="img img-fluid o_we_custom_image" data-original-id="757"
+                                             data-original-src="ecommerce_sgt/static/description/bed_room.png"
+                                             data-mimetype="image/png" data-resize-width="400" height="500"/>
+                                    </a>
+                                    <div class="s_product_list_item_link">
+                                        <strong>
+                                            <span style="font-size: 24px;">Bedroom</span>
+                                        </strong>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="s_text_block pt40 pb40 o_colored_level" data-snippet="s_text_block" data-name="Text"
+                             style="background-image: none;">
+                        <div class="container s_allow_columns">
+                            <h2 style="text-align: center;">
+                                <strong>
+                                    <span style="font-size: 36px;">Our Products</span>
+                                </strong>
+                                <br/>
+                            </h2>
+                        </div>
+                    </section>
+                    <section data-snippet="s_dynamic_snippet_products"
+                             class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level s_product_product_borderless_1 o_dynamic_empty"
+                             data-name="Products" style="background-image: none;" data-product-category-id="13"
+                             data-number-of-records="16" data-filter-id="3"
+                             data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
+                             data-carousel-interval="5000">
+                        <div class="o_not_editable container">
+                            <div class="css_non_editable_mode_hidden">
+                                <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">
+                                    Your Dynamic Snippet will be displayed here... This message is displayed because you
+                                    did not provided both a filter and a template to use.
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="dynamic_snippet_template"/>
+                        </div>
+                    </section>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <section class="s_masonry_block o_colored_level pt8 pb0" data-vcss="001" data-vxml="001"
+                                     data-snippet="s_masonry_block" data-name="Masonry"
+                                     style="background-color: rgb(227, 217, 217); background-image: none;">
+                                <div class="container-fluid">
+                                    <div class="row o_grid_mode" data-row-count="10">
+
+
+                                        <div class="o_grid_item o_grid_item_image text-center o_colored_level g-height-9 g-col-lg-4 col-lg-4 o_grid_item_image_contain"
+                                             data-name="Block"
+                                             style="grid-area: 2 / 9 / 11 / 13; z-index: 1; background-image: none;">
+                                            <img src="/web/image/843-76a03d90/slide1.png" alt=""
+                                                 class="img img-fluid mx-auto o_we_custom_image"
+                                                 style="width: 100% !important;" data-original-id="842"
+                                                 data-original-src="/web/image/842-e8b2be4a/slide1.png"
+                                                 data-mimetype="image/png" data-resize-width="401" loading="lazy"
+                                                 data-bs-original-title="" title="" aria-describedby="tooltip155314"/>
+                                        </div>
+
+
+                                        <div class="o_grid_item text-center o_colored_level o_cc o_cc4 g-height-10 g-col-lg-8 col-lg-8"
+                                             data-name="Block"
+                                             style="grid-area: 1 / 1 / 11 / 9; z-index: 4; background-color: rgb(227, 217, 217); background-image: none;">
+                                            <h2>
+                                                <font class="text-black">
+                                                    <strong>50+ Beautiful rooms</strong>
+                                                </font>
+                                                <br/>
+                                                <font class="text-black">
+                                                    <strong>inspiration</strong>
+                                                </font>
+                                                <br/>
+                                            </h2>
+                                            <p>
+                                                <font class="text-black">Our designer already made a lot of beautiful
+                                                    prototipe of rooms that inspire you&amp;nbsp;
+                                                </font>
+                                            </p>
+                                            <p>
+                                                <br/>
+                                            </p>
+
+
+                                        </div>
+
+                                        <div class="o_grid_item o_colored_level g-col-lg-4 g-height-1 col-lg-4"
+                                             style="grid-area: 7 / 2 / 8 / 6; z-index: 5; background-color: rgb(181, 99, 8); background-image: none;">
+                                            <h3>
+                                                <font class="text-o-color-4">
+                                                    <strong><span class="oe-tabs" style="width: 33.75px;"></span>​
+                                                        Explore More
+                                                    </strong>
+                                                </font>
+                                                <br/>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <section
+                                    class="s_image_gallery o_slideshow o_colored_level s_image_gallery_indicators_arrows_rounded s_image_gallery_show_indicators s_image_gallery_indicators_dots pb0 pt24"
+                                    data-vcss="001" data-columns="3"
+                                    style="height: 500px; overflow: hidden; background-color: rgb(227, 217, 217);"
+                                    data-snippet="s_image_gallery" data-name="Image Gallery">
+                                <div class="o_container_small">
+                                    <div id="slideshow_1697710197943" class="carousel slide" data-bs-ride="carousel"
+                                         data-bs-interval="0" style="margin: 0 12px;">
+                                        <div class="carousel-inner" style="padding: 0;">
+                                            <div class="carousel-item active" style="">
+                                                <img class="img img-fluid d-block img-thumbnail"
+                                                     src="/web/image/website.library_image_08" data-name="Image"
+                                                     data-index="0" loading="lazy" data-original-id="418"
+                                                     data-original-src="/website/static/src/img/library/mobile.jpg"
+                                                     data-mimetype="image/jpeg" style=""/>
+                                            </div>
+                                            <div class="carousel-item" style="">
+                                                <img class="img img-fluid d-block img-thumbnail"
+                                                     src="/web/image/834-cf696804/clock.jpg" data-name="Image"
+                                                     data-index="1" loading="lazy" data-original-id="413"
+                                                     data-original-src="/website/static/src/img/library/clock.jpg"
+                                                     data-mimetype="image/jpeg" data-bs-original-title="" title=""
+                                                     aria-describedby="tooltip752641" style="" data-quality="59"
+                                                     data-resize-width="1600"/>
+                                            </div>
+                                            <div class="carousel-item" style="">
+                                                <img src="/web/image/855-fc52658b/slide2.png" alt=""
+                                                     class="img img-fluid d-block img-thumbnail o_we_custom_image"
+                                                     data-original-id="854"
+                                                     data-original-src="/web/image/854-aa956a16/slide2.png"
+                                                     data-mimetype="image/png" data-resize-width="348" loading="lazy"
+                                                     style=""/>
+                                            </div>
+                                        </div>
+                                        <ul class="carousel-indicators" style="">
+                                            <li class="o_indicators_left text-center d-none" aria-label="Previous"
+                                                title="Previous">
+                                                <i class="fa fa-chevron-left"/>
+                                            </li>
+
+
+                                            <li data-bs-target="#slideshow_1697710197943" data-bs-slide-to="0"
+                                                style="background-image: url(/web/image/website.library_image_08)"
+                                                class="active" aria-current="true"/>
+                                            <li data-bs-target="#slideshow_1697710197943" data-bs-slide-to="1"
+                                                style="background-image: url(/web/image/website.library_image_03)"/>
+                                            <li data-bs-target="#slideshow_1697710197943" data-bs-slide-to="2"
+                                                style="background-image: url(&quot;/web/image/854-aa956a16/slide2.png&quot;);"/>
+
+
+                                            <li class="o_indicators_right text-center d-none" aria-label="Next"
+                                                title="Next">
+                                                <i class="fa fa-chevron-right"/>
+                                            </li>
+                                        </ul>
+                                        <a class="carousel-control-prev o_we_no_overlay o_not_editable"
+                                           href="#slideshow_1697710197943" data-bs-slide="prev" aria-label="Previous"
+                                           title="Previous" contenteditable="false">
+                                            <span class="fa fa-chevron-left fa-2x text-white"/>
+                                            <span class="visually-hidden o_default_snippet_text">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next o_we_no_overlay o_not_editable"
+                                           href="#slideshow_1697710197943" data-bs-slide="next" aria-label="Next"
+                                           title="Next" contenteditable="false">
+                                            <span class="fa fa-chevron-right fa-2x text-white"/>
+                                            <span class="visually-hidden o_default_snippet_text">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+
+                    <style>
+                        /* Custom CSS for irregular image gallery */
+                        .o_masonry_col img {
+                        display: block;
+                        width: 100%;
+                        max-width: 100%;
+                        border: 8px solid #fff;
+                        margin-bottom: 10px;
+                        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+                        }
+
+                        /* Add spacing between images for an irregular look */
+                        .o_masonry_col:nth-child(odd) img {
+                        margin-left: 5px;
+                        margin-right: 5px;
+                        }
+
+                        .o_masonry_col:nth-child(even) img {
+                        margin-top: 10px;
+                        }
+                    </style>
+
+                    <section
+                            class="s_image_gallery o_spc-small o_colored_level o_masonry o_full_screen_height pb48 pt56"
+                            data-vcss="001" data-columns="3" style="overflow: hidden; background-image: none;"
+                            data-snippet="s_images_wall" data-name="Images Wall">
+                        <div class="container">
+                            <div class="row s_nb_column_fixed" style="text-align: center;">
+                                <h5>
+                                    <strong>
+                                        <font class="text-800">Share your setup with
+                                            <br/>
+                                            <span style="font-size: 36px;">#Funiro Furniture</span>
+                                        </font>
+                                    </strong>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup1.png" data-index="0" alt=""
+                                             data-name="Image"
+                                             style="width: 100% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip683546"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup2.png" data-index="4" alt=""
+                                             data-name="Image"
+                                             style="width: 75% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip376799"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup3.png" data-index="5" alt=""
+                                             data-name="Image"
+                                             style="width: 90% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup4.png" data-index="1" alt=""
+                                             data-name="Image"
+                                             style="width: 85% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip599186"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup5.png" data-index="3" alt=""
+                                             data-name="Image"
+                                             style="width: 70% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip120820"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup6.png" data-index="2" alt=""
+                                             data-name="Image"
+                                             style="width: 100% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip845840"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup7.png" data-index="1" alt=""
+                                             data-name="Image"
+                                             style="width: 85% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip599186"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup8.png" data-index="3" alt=""
+                                             data-name="Image"
+                                             style="width: 70% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip120820"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup9.png" data-index="2" alt=""
+                                             data-name="Image"
+                                             style="width: 100% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip845840"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup10.png" data-index="1" alt=""
+                                             data-name="Image"
+                                             style="width: 85% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip599186"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                                <div class="o_masonry_col o_snippet_not_selectable col-lg-4">
+                                    <h3>
+                                        <img class="img img-fluid me-auto float-start img-thumbnail border"
+                                             src="ecommerce_sgt/static/description/setup11.png" data-index="3" alt=""
+                                             data-name="Image"
+                                             style="width: 70% !important; border-width: 8px !important; border-color: rgb(255, 255, 255) !important;"
+                                             data-bs-original-title="" title="" aria-describedby="tooltip120820"
+                                             loading="lazy"/>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

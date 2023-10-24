@@ -1307,26 +1307,16 @@
                     <t t-set="additional_title">Shop</t>
                     <t t-set="grid_block_name">Grid</t>
                     <t t-set="product_block_name">Product</t>
-
-                    <!-- Qweb variable defining the class suffix for navbar items.
-                         Change accordingly to the derired visual result (eg. `primary`, `dark`...)-->
                     <t t-set="navClass" t-valuef="light"/>
 
-                    <!-- Check for active options: the stored value may be used in sub-templates too  -->
                     <t t-set="opt_wsale_categories" t-value="is_view_active('website_sale.products_categories')"/>
                     <t t-set="opt_wsale_attributes" t-value="is_view_active('website_sale.products_attributes')"/>
                     <t t-set="opt_wsale_filter_price" t-value="is_view_active('website_sale.filter_products_price')"/>
-
-                    <!--                    <t t-set="opt_wsale_categories_top"-->
-                    <!--                       t-value="is_view_active('website_sale.products_categories_top')"/>-->
                     <t t-set="opt_wsale_attributes_top"
                        t-value="is_view_active('website_sale.products_attributes_top')"/>
 
                     <t t-set="website_sale_pricelists" t-value="website.get_pricelist_available(show_visible=True)"/>
                     <t t-set="website_sale_sortable" t-value="website._get_product_sort_mapping()"/>
-
-                    <!--                    <t t-set="hasLeftColumn" t-value="opt_wsale_categories or opt_wsale_attributes"/>-->
-
                     <t t-set="isFilteringByPrice" t-if="opt_wsale_filter_price"
                        t-value="float_round(available_min_price, 2) != float_round(min_price, 2) or float_round(available_max_price, 2) != float_round(max_price, 2)"/>
                     <t t-set="hasPricelistDropdown"
@@ -1334,7 +1324,6 @@
                     <t t-set="isSortingBy"
                        t-value="[sort for sort in website_sale_sortable if sort[0]==request.params.get('order', '')]"/>
                     <t t-set="pageName" t-value="'homepage'"/>
-                    <div class="oe_structure"/>
                     <section class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96 o_colored_level"
                              data-scroll-background-ratio="1" data-snippet="s_cover" data-name="Cover"
                              style="background-image: none;">
@@ -1343,8 +1332,7 @@
                         <div class="o_we_bg_filter bg-black-50"/>
                         <div class="s_allow_columns container-fluid">
                             <h1 style="text-align: center;">
-                                <span class="fa fa-gg" data-bs-original-title="" title=""
-                                      aria-describedby="tooltip5242"
+                                <span class="fa fa-gg" data-bs-original-title="" title="" aria-describedby="tooltip5242"
                                       style="color: rgb(239, 198, 49);"/>
                                 <br/>
                             </h1>
@@ -1356,9 +1344,10 @@
                             </h1>
                             <p class="lead" style="text-align: center;">
                                 <font class="text-black">
-                                    <strong><span class="oe-tabs" style="width: 23.5833px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​Home
+                                    <strong><span class="oe-tabs" style="width: 3.56665px;"/>​
+                                        <span class="oe-tabs"
+                                              style="width: 40px;"/>
+                                        ​<span class="oe-tabs" style="width: 40px;"/>​Home
                                         &amp;gt;&amp;nbsp; Shop
                                     </strong>
                                 </font>
@@ -1366,19 +1355,26 @@
                         </div>
                     </section>
                     <style>
-                        .container, .o_wsale_products_grid_wrapper {
-                        background-color: transparent;
-                        }
-
-                        .o_wsale_product_grid_wrapper {
-                        max-width: 175px; /* Adjust as needed */
-                        max-height: 175; /* Adjust as needed */
+                        /* Increase the size of product images */
+                        .o_wsale_product_grid_wrapper img {
+                        max-width: 800px; /* Adjust the width as needed */
+                        max-height: 1000px; /* Adjust the height as needed */
                         }
                     </style>
+                    <!--                    <style>-->
+                    <!--                        .container, .o_wsale_products_grid_wrapper {-->
+                    <!--                        background-color: transparent;-->
+                    <!--                        }-->
+
+                    <!--                        .o_wsale_product_grid_wrapper {-->
+                    <!--                        max-width: 175px; /* Adjust as needed */-->
+                    <!--                        max-height: 175; /* Adjust as needed */-->
+                    <!--                        }-->
+                    <!--                    </style>-->
                     <!--                    <section>-->
                     <section>
                         <div id="wrap" class="js_sale o_wsale_products_page">
-                            <div class="oe_structure oe_empty oe_structure_not_nearest"
+                            <div class="oe_structure oe_empty oe_structure_not_nearest o_dirty"
                                  id="oe_structure_website_sale_products_1"/>
                             <div class="container oe_website_sale pt-2">
                                 <div class="row o_wsale_products_main_row align-items-start flex-nowrap">
@@ -1432,8 +1428,7 @@
 
                                             <button t-if="is_view_active('website_sale.sort') or opt_wsale_categories or opt_wsale_attributes or opt_wsale_attributes_top"
                                                     t-attf-class="btn btn-{{navClass}} position-relative ms-3 {{not opt_wsale_attributes_top and 'd-lg-none'}}"
-                                                    data-bs-toggle="offcanvas"
-                                                    data-bs-target="#o_wsale_offcanvas">
+                                                    data-bs-toggle="offcanvas" data-bs-target="#o_wsale_offcanvas">
                                                 <i class="fa fa-sliders"/>
                                                 <span t-if="isFilteringByPrice or attrib_set"
                                                       t-attf-class="position-absolute top-0 start-100 translate-middle badge border border-{{navClass}} rounded-circle bg-danger p-1">
@@ -1451,9 +1446,8 @@
                                         </div>
 
                                         <t t-if="category">
-                                            <t t-set='editor_msg'>Drag building blocks here to customize the header for
-                                                "<t
-                                                        t-esc='category.name'/>" category.
+                                            <t t-set="editor_msg">Drag building blocks here to customize the header for
+                                                "<t t-esc="category.name"/>" category.
                                             </t>
                                             <div class="mb16" id="category_header"
                                                  t-att-data-editor-message="editor_msg"
@@ -1471,6 +1465,45 @@
                                                     <col t-foreach="ppr" t-as="p"/>
                                                 </colgroup>
                                                 <tbody>
+<!--                                                    <tr t-foreach="bins" t-as="tr_product">-->
+<!--                                                        <t t-foreach="tr_product" t-as="td_product">-->
+<!--                                                            <t t-if="td_product">-->
+<!--                                                                &lt;!&ndash; We use t-attf-class here to allow easier customization &ndash;&gt;-->
+<!--                                                                <td t-att-colspan="td_product['x'] != 1 and td_product['x']"-->
+<!--                                                                    t-att-rowspan="td_product['y'] != 1 and td_product['y']"-->
+<!--                                                                    t-attf-class="oe_product"-->
+<!--                                                                    t-att-data-ribbon-id="td_product['ribbon'].id"-->
+<!--                                                                    t-att-data-name="product_block_name">-->
+<!--                                                                    <div t-attf-class="o_wsale_product_grid_wrapper position-relative h-100 o_wsale_product_grid_wrapper_#{td_product['x']}_#{td_product['y']}">-->
+<!--                                                                        <t t-call="website_sale.products_item">-->
+<!--                                                                            <t t-set="product"-->
+<!--                                                                               t-value="td_product.get('product')"/>-->
+
+<!--                                                                            &lt;!&ndash; Product Name &ndash;&gt;-->
+<!--                                                                            <p style="color: black; text-align: left;">-->
+<!--                                                                                <t t-if="product" t-esc="product.name"/>-->
+<!--                                                                            </p>-->
+
+<!--                                                                            &lt;!&ndash; Product Description (in ash color) &ndash;&gt;-->
+<!--                                                                            <p style="color: #a9a9a9; text-align: left;">-->
+<!--                                                                                <t t-if="product"-->
+<!--                                                                                   t-esc="product.description"/>-->
+<!--                                                                            </p>-->
+
+<!--                                                                            &lt;!&ndash; Product Rate (if it exists) &ndash;&gt;-->
+<!--                                                                            &lt;!&ndash;                                                                            <p style="color: black; text-align: left;">&ndash;&gt;-->
+<!--                                                                            &lt;!&ndash;                                                                                <t t-if="product.rate"&ndash;&gt;-->
+<!--                                                                            &lt;!&ndash;                                                                                   t-esc="product.rate"/>&ndash;&gt;-->
+<!--                                                                            &lt;!&ndash;                                                                            </p>&ndash;&gt;-->
+<!--                                                                        </t>-->
+<!--                                                                    </div>-->
+<!--                                                                </td>-->
+<!--                                                            </t>-->
+<!--                                                            <td t-else=""/>-->
+<!--                                                        </t>-->
+<!--                                                    </tr>-->
+
+
                                                     <tr t-foreach="bins" t-as="tr_product">
                                                         <t t-foreach="tr_product" t-as="td_product">
                                                             <t t-if="td_product">
@@ -1503,7 +1536,7 @@
                                             </t>
                                             <t t-else="">
                                                 <h3 class="mt8">No results</h3>
-                                                <p>No results for "<strong t-esc='search'/>"
+                                                <p>No results for "<strong t-esc="search"/>"
                                                     <t t-if="category">in category "<strong
                                                             t-esc="category.display_name"/>"
                                                     </t>
@@ -1523,6 +1556,155 @@
                                 <t t-call="website_sale.o_wsale_offcanvas"/>
                             </div>
                             <!--                        <div class="dynamic_snippet_template"/>-->
+                        </div>
+                    </section>
+                    <section class="s_text_block o_colored_level pt32 pb40" data-snippet="s_text_block" data-name="Text"
+                             style="background-color: rgb(247, 231, 223); background-image: none; position: relative;">
+                        <div class="s_allow_columns container-fluid">
+                            <div class="row">
+                                <div class="o_colored_level col-lg-3" style="">
+                                    <h2>
+                                        <strong><span class="oe-tabs" style="width: 25px;"/>​
+                                            <span class="oe-tabs" style="width: 40px;"/>
+                                            ​<span class="oe-tabs" style="width: 40px;"/>​
+                                        </strong>
+                                    </h2>
+                                    <h2>
+                                        <br/>
+                                    </h2>
+                                    <h3 style="text-align: left;">
+
+                                        &amp;nbsp;<span class="oe-tabs" style="width: 6.06667px;"/>​<span
+                                            class="oe-tabs" style="width: 40px;"/>​
+                                        <strong><span class="fa fa-trophy fa-2x me-auto float-start"
+                                                      data-bs-original-title="" title=""
+                                                      aria-describedby="tooltip403649"/>High Quality &amp;nbsp; &amp;nbsp;
+                                            &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                            <span class="oe-tabs" style="width: 4.23334px;"/>​
+                                            <span class="oe-tabs"
+                                                  style="width: 40px;"/>
+                                            ​
+                                        </strong>
+                                        <span style="font-size: 14px;">
+                                            <span class="oe-tabs" style="width: 33.0667px;"/>
+                                            ​crafted from
+                                            top materials
+                                        </span>
+                                        <span class="oe-tabs" style="width: 25px;">​</span>
+                                        <br/>
+                                    </h3>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </div>
+                                <div class="o_colored_level col-lg-3" style="">
+                                    <h2>
+                                        <strong>
+                                            <span class="oe-tabs" style="width: 35px;"/>
+                                            <span style="font-size: 18px;">​
+                                            </span>
+                                            <span class="oe-tabs" style="width: 24.0667px;"/>
+                                            <span style="font-size: 18px;">​</span>
+                                            <span class="oe-tabs" style="width: 24.0667px;"/>
+                                            <span style="font-size: 18px;">​
+                                            </span>
+                                            <span class="oe-tabs" style="width: 24.0667px;"/>
+                                            <span style="font-size: 18px;">​​
+                                            </span>
+                                        </strong>
+                                    </h2>
+                                    <h2>
+                                        <br/>
+                                    </h2>
+                                    <h3>
+                                        <strong>
+                                            <span class="oe-tabs" style="width: 35px;"/>
+                                            <span style="font-size: 18px;">​
+                                            </span>
+                                            <span class="oe-tabs" style="width: 26.0667px;"/>
+                                            <span style="font-size: 18px;">​</span>
+                                            <span class="oe-tabs" style="width: 26.0667px;"/>
+                                            <span style="font-size: 18px;">​
+                                                <span class="fa fa-check me-auto float-start text-black bg-o-color-4 rounded-circle fa-2x"
+                                                      data-bs-original-title="" title=""
+                                                      aria-describedby="tooltip667188" style=""/>Warranty Protection
+                                            </span>
+                                        </strong>
+                                        <br/>
+                                    </h3>
+                                    <p placeholder="Type &quot;/&quot; for commands" style="text-align: left;"><span
+                                            class="oe-tabs" style="width: 35px;"/>​
+                                        <span class="oe-tabs" style="width: 40px;"/>
+                                        <span style="font-size: 18px;">
+                                            ​
+                                        </span>
+                                        <span class="oe-tabs" style="width: 32.0667px;"/>
+                                        <span style="font-size: 18px;">​Over 2 years</span>
+                                    </p>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </div>
+                                <div class="o_colored_level col-lg-3" style="">
+                                    <h2>
+                                        <br/>
+                                    </h2>
+                                    <h2>
+                                        <br/>
+                                    </h2>
+                                    <h2>
+                                        <strong>
+
+
+                                            &amp;nbsp;&amp;nbsp;
+                                            <span class="fa fa-gift fa-2x" data-bs-original-title="" title=""
+                                                  aria-describedby="tooltip926559"/>
+                                            <span class="oe-tabs" style="width: 38.2833px;"/>​&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                            Free Shipping
+                                        </strong>
+                                    </h2>
+                                    <p style="text-align: center;">
+                                        <span style="font-size: 18px;">Order over 150 $</span>
+                                    </p>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </div>
+                                <div class="o_colored_level col-lg-3" style="">
+                                    <h2>
+                                        <br/>
+                                    </h2>
+                                    <h2>
+                                        <br/>
+                                    </h2>
+                                    <h4>
+                                        <strong><span class="oe-tabs" style="width: 15px;"/>​
+                                            <span class="oe-tabs" style="width: 40px;"/>
+                                            ​
+                                            <span class="oe-tabs" style="width: 40px;"/>
+                                            <span class="fa fa-headphones fa-2x" data-bs-original-title="" title=""
+                                                  aria-describedby="tooltip390211"/>​<span class="oe-tabs"
+                                                                                           style="width: 29.45px;"/>​​24
+                                            / 7 Support
+                                        </strong>
+                                        <br/>
+                                    </h4>
+                                    <p style="text-align: center;"><span class="oe-tabs" style="width: 5.8833px;"/>​&amp;nbsp;
+                                        <span class="oe-tabs" style="width: 17.0667px;"/>​<span class="oe-tabs"
+                                                                                                style="width: 40px;"/>​
+                                        <span class="oe-tabs" style="width: 40px;"/>​Dedicated support
+                                    </p>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </t>
@@ -1931,424 +2113,424 @@
         <!--        </template>-->
 
 
-        <template id="custom_homepage" inherit_id="website.homepage" name="Home">
-            <xpath expr="//t[@t-call='website.layout']" position="replace">
-                <t t-call="website.layout">
-                    <t t-set="pageName" t-value="'homepage'"/>
-                    <div class="oe_structure"/>
-                    <section>
-                        <div class="row no-gutters flex-equal-height">
-                            <!--                            <section data-snippet="s_dynamic_snippet_products"-->
-                            <!--                                     class="s_dynamic_snippet_products s_dynamic o_colored_level bg-400 pb0 pt0 s_product_product_banner o_half_screen_height o_dynamic_empty"-->
-                            <!--                                     data-name="Products" style="" data-product-category-id="all"-->
-                            <!--                                     data-number-of-records="1" data-filter-id="1"-->
-                            <!--                                     data-template-key="website_sale.dynamic_filter_template_product_product_banner"-->
-                            <!--                                     data-carousel-interval="5000" data-force-minimum-max-limit-to16="1"-->
-                            <!--                                     data-number-of-elements="1" data-number-of-elements-small-devices="1">-->
-                            <!--                                <div class="o_not_editable container-fluid">-->
-                            <!--                                    <div class="css_non_editable_mode_hidden">-->
-                            <!--                                        <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">-->
-                            <!--                                            Your Dynamic Snippet will be displayed here... This message is displayed-->
-                            <!--                                            because you did not provide both a filter and a template to use.-->
-                            <!--                                            <br/>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="dynamic_snippet_template"/>-->
-                            <!--                                </div>-->
-                            <!--                            </section>-->
-                            <!--                            <section class="s_product_list o_colored_level pt0" data-snippet="s_product_list"-->
-                            <!--                                     data-name="Items" style="background-color: rgb(244, 207, 154);">-->
-                            <!--                                <div class="container-fluid">-->
-                            <!--                                    <div class="row o_grid_mode" style="" data-row-count="5">-->
-                            <!--                                        <div class="o_colored_level o_grid_item g-col-lg-6 g-height-4 col-lg-6"-->
-                            <!--                                             style="grid-area: 1 / 1 / 5 / 7; z-index: 1;">-->
-                            <!--                                            <a href="" data-bs-original-title="" title="">-->
-                            <!--                                                <img src="/web/image/1170-7d8deced/s_product_list_default_image_1.jpg"-->
-                            <!--                                                     alt="" class="img img-fluid" loading="lazy" data-original-id="831"-->
-                            <!--                                                     data-original-src="/website/static/src/img/snippets_demo/furniture.jpg"-->
-                            <!--                                                     data-mimetype="image/jpeg" data-bs-original-title="" title=""-->
-                            <!--                                                     aria-describedby="tooltip986327" style="width: 100% !important;"-->
-                            <!--                                                     data-resize-width="400"/>-->
-                            <!--                                            </a>-->
-                            <!--                                            <div class="s_product_list_item_link">-->
-                            <!--                                                <h3>-->
-                            <!--                                                    Side table-->
-                            <!--                                                    <br/>-->
-                            <!--                                                </h3>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="o_colored_level o_grid_item g-col-lg-6 g-height-4 col-lg-6"-->
-                            <!--                                             style="grid-area: 1 / 7 / 5 / 13; z-index: 2;">-->
-                            <!--                                            <img src="http://localhost:8016/web/image/website.s_product_list_default_image_2"-->
-                            <!--                                                 alt="" class="img img-fluid" loading="lazy" data-original-id="832"-->
-                            <!--                                                 data-original-src="/website/static/src/img/snippets_demo/clothes.jpg"-->
-                            <!--                                                 data-mimetype="image/jpeg" data-bs-original-title="" title=""-->
-                            <!--                                                 aria-describedby="tooltip622424" style="width: 100% !important;"/>-->
-                            <!--                                            <div class="s_product_list_item_link">-->
-                            <!--                                                <h3>-->
-                            <!--                                                    Side table-->
-                            <!--                                                    <br/>-->
-                            <!--                                                </h3>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"-->
-                            <!--                                             style="grid-area: 5 / 3 / 6 / 5; z-index: 3;">-->
-                            <!--                                            <p>-->
-                            <!--                                                <u>-->
-                            <!--                                                    <span style="font-size: 18px;">View More</span>-->
-                            <!--                                                </u>-->
-                            <!--                                                <br/>-->
-                            <!--                                            </p>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"-->
-                            <!--                                             style="grid-area: 5 / 9 / 6 / 11; z-index: 4;">-->
-                            <!--                                            <p>-->
-                            <!--                                                <u>-->
-                            <!--                                                    <span style="font-size: 18px;">View More</span>-->
-                            <!--                                                </u>-->
-                            <!--                                                <br/>-->
-                            <!--                                            </p>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </section>-->
-                            <section class="s_product_list o_colored_level" data-snippet="s_product_list"
-                                     data-name="Items" style="background-image: none;">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-4 col-6 o_colored_level col-lg-12 pb0 shadow"
-                                             style="background-color: rgb(251, 247, 116); box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 12px 0px inset !important;">
+        <!--        <template id="custom_homepage" inherit_id="website.homepage" name="Home">-->
+        <!--            <xpath expr="//t[@t-call='website.layout']" position="replace">-->
+        <!--                <t t-call="website.layout">-->
+        <!--                    <t t-set="pageName" t-value="'homepage'"/>-->
+        <!--                    <div class="oe_structure"/>-->
+        <!--                    <section>-->
+        <!--                        <div class="row no-gutters flex-equal-height">-->
+        <!--                            &lt;!&ndash;                            <section data-snippet="s_dynamic_snippet_products"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     class="s_dynamic_snippet_products s_dynamic o_colored_level bg-400 pb0 pt0 s_product_product_banner o_half_screen_height o_dynamic_empty"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     data-name="Products" style="" data-product-category-id="all"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     data-number-of-records="1" data-filter-id="1"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     data-template-key="website_sale.dynamic_filter_template_product_product_banner"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     data-carousel-interval="5000" data-force-minimum-max-limit-to16="1"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     data-number-of-elements="1" data-number-of-elements-small-devices="1">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                <div class="o_not_editable container-fluid">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                    <div class="css_non_editable_mode_hidden">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            Your Dynamic Snippet will be displayed here... This message is displayed&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            because you did not provide both a filter and a template to use.&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <br/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                    </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                    <div class="dynamic_snippet_template"/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                            </section>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                            <section class="s_product_list o_colored_level pt0" data-snippet="s_product_list"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                     data-name="Items" style="background-color: rgb(244, 207, 154);">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                <div class="container-fluid">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                    <div class="row o_grid_mode" style="" data-row-count="5">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        <div class="o_colored_level o_grid_item g-col-lg-6 g-height-4 col-lg-6"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                             style="grid-area: 1 / 1 / 5 / 7; z-index: 1;">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <a href="" data-bs-original-title="" title="">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <img src="/web/image/1170-7d8deced/s_product_list_default_image_1.jpg"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                     alt="" class="img img-fluid" loading="lazy" data-original-id="831"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                     data-original-src="/website/static/src/img/snippets_demo/furniture.jpg"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                     data-mimetype="image/jpeg" data-bs-original-title="" title=""&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                     aria-describedby="tooltip986327" style="width: 100% !important;"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                     data-resize-width="400"/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            </a>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <div class="s_product_list_item_link">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <h3>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                    Side table&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                    <br/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                </h3>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        <div class="o_colored_level o_grid_item g-col-lg-6 g-height-4 col-lg-6"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                             style="grid-area: 1 / 7 / 5 / 13; z-index: 2;">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <img src="http://localhost:8016/web/image/website.s_product_list_default_image_2"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                 alt="" class="img img-fluid" loading="lazy" data-original-id="832"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                 data-original-src="/website/static/src/img/snippets_demo/clothes.jpg"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                 data-mimetype="image/jpeg" data-bs-original-title="" title=""&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                 aria-describedby="tooltip622424" style="width: 100% !important;"/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <div class="s_product_list_item_link">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <h3>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                    Side table&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                    <br/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                </h3>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                             style="grid-area: 5 / 3 / 6 / 5; z-index: 3;">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <p>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <u>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                    <span style="font-size: 18px;">View More</span>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                </u>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <br/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            </p>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                             style="grid-area: 5 / 9 / 6 / 11; z-index: 4;">&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            <p>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <u>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                    <span style="font-size: 18px;">View More</span>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                </u>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                                <br/>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                            </p>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                        </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                    </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                            &lt;!&ndash;                            </section>&ndash;&gt;-->
+        <!--                            <section class="s_product_list o_colored_level" data-snippet="s_product_list"-->
+        <!--                                     data-name="Items" style="background-image: none;">-->
+        <!--                                <div class="container-fluid">-->
+        <!--                                    <div class="row">-->
+        <!--                                        <div class="col-md-4 col-6 o_colored_level col-lg-12 pb0 shadow"-->
+        <!--                                             style="background-color: rgb(251, 247, 116); box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 12px 0px inset !important;">-->
 
-                                            <img src="/web/image/website.s_product_list_default_image_1" alt=""
-                                                 class="img img-fluid" loading="lazy" data-original-id="445"
-                                                 data-original-src="/website/static/src/img/snippets_demo/furniture.jpg"
-                                                 data-mimetype="image/jpeg" style=""/>
+        <!--                                            <img src="/web/image/website.s_product_list_default_image_1" alt=""-->
+        <!--                                                 class="img img-fluid" loading="lazy" data-original-id="445"-->
+        <!--                                                 data-original-src="/website/static/src/img/snippets_demo/furniture.jpg"-->
+        <!--                                                 data-mimetype="image/jpeg" style=""/>-->
 
-                                            <div class="s_product_list_item_link">
-                                                <h1>
-                                                    <br/>
-                                                </h1>
-                                                <h1 style="text-align: left;">Furniture</h1>
-                                                <p style="text-align: left;">
-                                                    <a href="/shop">Shop Now</a>
-                                                    <!--                                                    <a itemprop="url" t-attf-href="/shop/product/#{slug(product)}">-->
-                                                    <br/>
-                                                </p>
-                                                <div>
-                                                    <br/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-
-                            <section style="background-color: rgb(243, 242, 242); background-image: none;"
-                                     class="o_colored_level">
-                                <div class="row no-gutters flex-equal-height">
-
-                                    <section class="s_product_list o_colored_level pt0 pb48"
-                                             data-snippet="s_product_list"
-                                             data-name="Items"
-                                             style="background-color: rgb(243, 230, 206); background-image: none;">
-                                        <div class="container-fluid">
-                                            <div class="row o_grid_mode" style="" data-row-count="5">
+        <!--                                            <div class="s_product_list_item_link">-->
+        <!--                                                <h1>-->
+        <!--                                                    <br/>-->
+        <!--                                                </h1>-->
+        <!--                                                <h1 style="text-align: left;">Furniture</h1>-->
+        <!--                                                <p style="text-align: left;">-->
+        <!--                                                    <a href="/shop">Shop Now</a>-->
+        <!--                                                    &lt;!&ndash;                                                    <a itemprop="url" t-attf-href="/shop/product/#{slug(product)}">&ndash;&gt;-->
+        <!--                                                    <br/>-->
+        <!--                                                </p>-->
+        <!--                                                <div>-->
+        <!--                                                    <br/>-->
+        <!--                                                </div>-->
+        <!--                                            </div>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                            </section>-->
 
 
-                                                <div class="o_colored_level o_grid_item g-col-lg-6 g-height-4 col-lg-6"
-                                                     style="grid-area: 1 / 7 / 5 / 13; z-index: 2;">
-                                                    <img src="/web/image/website.s_product_list_default_image_2"
-                                                         alt="" class="img img-fluid" loading="lazy"
-                                                         data-original-id="832"
-                                                         data-original-src="/website/static/src/img/snippets_demo/clothes.jpg"
-                                                         data-mimetype="image/jpeg" data-bs-original-title="" title=""
-                                                         aria-describedby="tooltip622424"
-                                                         style="width: 100% !important;"/>
-                                                    <div class="s_product_list_item_link">
-                                                        <h3>
-                                                            Side table
-                                                            <br/>
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                                <div class="o_grid_item o_colored_level g-col-lg-5 g-height-3 col-lg-5"
-                                                     style="grid-area: 1 / 1 / 4 / 6; z-index: 3;">
-                                                    <p>
-                                                        <u>&amp;nbsp;
-                                                            <span style="font-size: 18px;">
-                                                                <img style="width: 100% !important;"
-                                                                     aria-describedby="tooltip622424" title=""
-                                                                     data-bs-original-title=""
-                                                                     data-mimetype="image/jpeg"
-                                                                     data-original-src="/website/static/src/img/snippets_demo/clothes.jpg"
-                                                                     data-original-id="832" loading="lazy"
-                                                                     class="img img-fluid"
-                                                                     alt=""
-                                                                     src="/web/image/website.s_product_list_default_image_2"/>
-                                                            </span>
-                                                        </u>
-                                                    </p>
-                                                    <p>
-                                                        <u>
-                                                            <span style="font-size: 24px;">Side table&amp;nbsp;</span>
-                                                        </u>
-                                                    </p>
-                                                    <p>
-                                                        <u>
-                                                            <a href="/shop">View More</a>
-                                                            <br/>
-                                                        </u>
-                                                    </p>
-                                                </div>
-                                                <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"
-                                                     style="grid-area: 5 / 9 / 6 / 11; z-index: 4;">
-                                                    <p>
-                                                        <u>
-                                                            <a href="/shop">View More</a>
-                                                            <br/>
-                                                        </u>
-                                                        <!--                                                        <u>-->
-                                                        <!--                                                            <span style="font-size: 18px;">View More</span>-->
-                                                        <!--                                                        </u>-->
-                                                        <!--                                                        <br/>-->
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
+        <!--                            <section style="background-color: rgb(243, 242, 242); background-image: none;"-->
+        <!--                                     class="o_colored_level">-->
+        <!--                                <div class="row no-gutters flex-equal-height">-->
+
+        <!--                                    <section class="s_product_list o_colored_level pt0 pb48"-->
+        <!--                                             data-snippet="s_product_list"-->
+        <!--                                             data-name="Items"-->
+        <!--                                             style="background-color: rgb(243, 230, 206); background-image: none;">-->
+        <!--                                        <div class="container-fluid">-->
+        <!--                                            <div class="row o_grid_mode" style="" data-row-count="5">-->
 
 
-                            <section class="s_text_block o_colored_level pb88 pt72" data-snippet="s_text_block"
-                                     data-name="Text" style="background-image: none;">
-                                <div class="s_allow_columns container-fluid">
-                                    <h3><span class="oe-tabs" style="width: 25px;"></span>​<span class="oe-tabs"
-                                                                                                 style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​Top Picks For You
-                                        <br/>
-                                    </h3>
-                                    <p><span class="oe-tabs" style="width: 25px;"></span>​<span class="oe-tabs"
-                                                                                                style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                               style="width: 40px;"></span>​<span
-                                            class="oe-tabs" style="width: 40px;"></span>​Find a bright ideal to suit
-                                        your taste with our great selection of suspension, floor and table lights
-                                        <br/>
-                                    </p>
-                                    <section data-snippet="s_dynamic_snippet_products"
-                                             class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level s_product_product_borderless_1 o_dynamic_empty"
-                                             data-name="Products" style="background-image: none;"
-                                             data-product-category-id="current"
-                                             data-number-of-records="16" data-filter-id="3"
-                                             data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
-                                             data-carousel-interval="5000">
-                                        <div class="o_not_editable container-fluid">
-                                            <div class="css_non_editable_mode_hidden">
-                                                <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">
-                                                    Your Dynamic Snippet will be displayed here... This message is
-                                                    displayed
-                                                    because
-                                                    you
-                                                    did not provided both a filter and a template to use.
-                                                    <br/>
-                                                </div>
-                                            </div>
-                                            <div class="dynamic_snippet_template"/>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
-                            <section data-snippet="s_dynamic_snippet_products"
-                                     class="s_dynamic_snippet_products s_dynamic o_colored_level s_product_product_borderless_1 pb64 pt0 d-lg-none o_snippet_desktop_invisible o_dynamic_empty"
-                                     data-name="Products" data-product-category-id="all" data-number-of-records="16"
-                                     data-filter-id="2"
-                                     data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
-                                     data-carousel-interval="5000" style="background-image: none; position: relative;"
-                                     data-invisible="0">
-                                <div class="o_not_editable container-fluid">
-                                    <div class="css_non_editable_mode_hidden">
-                                        <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">
-                                            Your Dynamic Snippet will be displayed here... This message is displayed
-                                            because you did not provide both a filter and a template to use.
-                                            <br/>
-                                        </div>
-                                    </div>
-                                    <div class="dynamic_snippet_template"/>
-                                </div>
-                            </section>
-                            <br/>
-                            <br/>
-                            <div class="row align-items-stretch" style="">
-                                <div class="o_colored_level col-lg-6" style="">
-                                    <img src="/web/image/website.s_image_text_default_image"
-                                         class="img img-fluid mx-auto" alt="" loading="lazy" data-original-id="843"
-                                         data-original-src="/website/static/src/img/snippets_demo/s_image_text.jpg"
-                                         data-mimetype="image/jpeg" data-bs-original-title="" title=""
-                                         aria-describedby="tooltip666390" style=""/>
-                                </div>
-                                <div class="o_colored_level col-lg-4 offset-lg-2" style="">
-                                    <p>
-                                        <span style="font-size: 18px;"><span class="oe-tabs"
-                                                                             style="width: 20px;"></span>​New Arrivals
-                                        </span>
-                                        <br/>
-                                    </p>
-                                    <h3><span class="oe-tabs" style="width: 20px;"></span>​Name
-                                        <br/>
-                                    </h3>
-                                    <p>
-                                        <!--                                        <a href="http://xc" class="mb-2 btn btn-primary" data-bs-original-title=""-->
-                                        <!--                                           title="" style="">-->
-                                        <!--                                            <span style="font-size: 24px;">-->
-                                        <!--                                                <font class="text-black bg-white">Order Now</font>-->
-                                        <!--                                            </span>-->
-                                        <!--                                        </a>-->
-                                        <!--                                        <br/>-->
-                                         <div class="s_donation o_colored_level" data-name="Donation Button"
-                                                     style="text-align: left;"
-                                                     data-donation-email="info@yourcompany.example.com"
-                                                     data-custom-amount="freeAmount" data-prefilled-options="true"
-                                                     data-descriptions="true"
-                                                     data-donation-amounts="[&quot;10&quot;, &quot;25&quot;, &quot;50&quot;, &quot;100&quot;]"
-                                                     data-minimum-amount="5" data-maximum-amount="100"
-                                                     data-slider-step="5" data-default-amount="25"
-                                                     data-snippet="s_donation_button">
-                                                    <form class="s_donation_form" action="/donation/pay" method="post"
-                                                          enctype="multipart/form-data">
-                                                        <span id="s_donation_description_inputs">
-                                                            <input type="hidden"
-                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"
-                                                                   name="donation_descriptions"
-                                                                   value="One year in high school."/>
-                                                            <input type="hidden"
-                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"
-                                                                   name="donation_descriptions"
-                                                                   value="One year in elementary school."/>
-                                                            <input type="hidden"
-                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"
-                                                                   name="donation_descriptions"
-                                                                   value="Caring for a baby for 1 month."/>
-                                                            <input type="hidden"
-                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"
-                                                                   name="donation_descriptions"
-                                                                   value="A year of cultural awakening."/>
-                                                        </span>
-                                                        <a href="http://P;ace order" type="button"
-                                                           class="s_donation_donate_btn mb-2 btn btn-outline-custom text-black bg-o-color-4 btn-lg"
-                                                           data-bs-original-title="" title=""
-                                                           style="border-width: 1px; border-style: solid;">
-                                                            <span style="font-size: 16px;">Order Now</span>
-                                                        </a>
-                                                    </form>
-                                                </div>
-                                    </p>
-                                </div>
-                            </div>
-                            <h1><span class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                         style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​Our Blogs
-                                <br/>
-                            </h1>
-                            <p><span class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                        style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​<span
-                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"
-                                                                                       style="width: 40px;"></span>​Find
-                                a bright ideal to suit your taste with our great selection
-                                <br/>
-                            </p>
-                            <section data-snippet="s_dynamic_snippet_products"
-                                     class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level s_product_product_borderless_1 o_dynamic_empty"
-                                     data-name="Products" style="background-image: none;"
-                                     data-product-category-id="current"
-                                     data-number-of-records="16" data-filter-id="3"
-                                     data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"
-                                     data-carousel-interval="5000">
-                                <div class="o_not_editable container-fluid">
-                                    <div class="css_non_editable_mode_hidden">
-                                        <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">
-                                            Your Dynamic Snippet will be displayed here... This message is displayed
-                                            because
-                                            you
-                                            did not provided both a filter and a template to use.
-                                            <br/>
-                                        </div>
-                                    </div>
-                                    <div class="dynamic_snippet_template"/>
-                                </div>
-                            </section>
-                            <div class="row" style="margin: 6px">
-                                <div class="col-39 Rectangle-47" style="text-align: center;">
-                                    <span class="LA-PALMA-is-the-only-destination-to-enjoy-the-palm-life-A-breath-taking-concept-inspired-by-tropica">
-                                        Our Instagram
-                                    </span>
-                                    <br/>
-                                    <span>Follow our store on Instagram</span>
-                                    <br/>
-                                    <button>
-                                        Follow Us
-                                        <a href="https://www.instagram.com/softguidetechnology"/>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </t>
-            </xpath>
-        </template>
+        <!--                                                <div class="o_colored_level o_grid_item g-col-lg-6 g-height-4 col-lg-6"-->
+        <!--                                                     style="grid-area: 1 / 7 / 5 / 13; z-index: 2;">-->
+        <!--                                                    <img src="/web/image/website.s_product_list_default_image_2"-->
+        <!--                                                         alt="" class="img img-fluid" loading="lazy"-->
+        <!--                                                         data-original-id="832"-->
+        <!--                                                         data-original-src="/website/static/src/img/snippets_demo/clothes.jpg"-->
+        <!--                                                         data-mimetype="image/jpeg" data-bs-original-title="" title=""-->
+        <!--                                                         aria-describedby="tooltip622424"-->
+        <!--                                                         style="width: 100% !important;"/>-->
+        <!--                                                    <div class="s_product_list_item_link">-->
+        <!--                                                        <h3>-->
+        <!--                                                            Side table-->
+        <!--                                                            <br/>-->
+        <!--                                                        </h3>-->
+        <!--                                                    </div>-->
+        <!--                                                </div>-->
+        <!--                                                <div class="o_grid_item o_colored_level g-col-lg-5 g-height-3 col-lg-5"-->
+        <!--                                                     style="grid-area: 1 / 1 / 4 / 6; z-index: 3;">-->
+        <!--                                                    <p>-->
+        <!--                                                        <u>&amp;nbsp;-->
+        <!--                                                            <span style="font-size: 18px;">-->
+        <!--                                                                <img style="width: 100% !important;"-->
+        <!--                                                                     aria-describedby="tooltip622424" title=""-->
+        <!--                                                                     data-bs-original-title=""-->
+        <!--                                                                     data-mimetype="image/jpeg"-->
+        <!--                                                                     data-original-src="/website/static/src/img/snippets_demo/clothes.jpg"-->
+        <!--                                                                     data-original-id="832" loading="lazy"-->
+        <!--                                                                     class="img img-fluid"-->
+        <!--                                                                     alt=""-->
+        <!--                                                                     src="/web/image/website.s_product_list_default_image_2"/>-->
+        <!--                                                            </span>-->
+        <!--                                                        </u>-->
+        <!--                                                    </p>-->
+        <!--                                                    <p>-->
+        <!--                                                        <u>-->
+        <!--                                                            <span style="font-size: 24px;">Side table&amp;nbsp;</span>-->
+        <!--                                                        </u>-->
+        <!--                                                    </p>-->
+        <!--                                                    <p>-->
+        <!--                                                        <u>-->
+        <!--                                                            <a href="/shop">View More</a>-->
+        <!--                                                            <br/>-->
+        <!--                                                        </u>-->
+        <!--                                                    </p>-->
+        <!--                                                </div>-->
+        <!--                                                <div class="o_grid_item o_colored_level g-col-lg-2 g-height-1 col-lg-2"-->
+        <!--                                                     style="grid-area: 5 / 9 / 6 / 11; z-index: 4;">-->
+        <!--                                                    <p>-->
+        <!--                                                        <u>-->
+        <!--                                                            <a href="/shop">View More</a>-->
+        <!--                                                            <br/>-->
+        <!--                                                        </u>-->
+        <!--                                                        &lt;!&ndash;                                                        <u>&ndash;&gt;-->
+        <!--                                                        &lt;!&ndash;                                                            <span style="font-size: 18px;">View More</span>&ndash;&gt;-->
+        <!--                                                        &lt;!&ndash;                                                        </u>&ndash;&gt;-->
+        <!--                                                        &lt;!&ndash;                                                        <br/>&ndash;&gt;-->
+        <!--                                                    </p>-->
+        <!--                                                </div>-->
+        <!--                                            </div>-->
+        <!--                                        </div>-->
+        <!--                                    </section>-->
+        <!--                                </div>-->
+        <!--                            </section>-->
+
+
+        <!--                            <section class="s_text_block o_colored_level pb88 pt72" data-snippet="s_text_block"-->
+        <!--                                     data-name="Text" style="background-image: none;">-->
+        <!--                                <div class="s_allow_columns container-fluid">-->
+        <!--                                    <h3><span class="oe-tabs" style="width: 25px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                                 style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​Top Picks For You-->
+        <!--                                        <br/>-->
+        <!--                                    </h3>-->
+        <!--                                    <p><span class="oe-tabs" style="width: 25px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                                style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                               style="width: 40px;"></span>​<span-->
+        <!--                                            class="oe-tabs" style="width: 40px;"></span>​Find a bright ideal to suit-->
+        <!--                                        your taste with our great selection of suspension, floor and table lights-->
+        <!--                                        <br/>-->
+        <!--                                    </p>-->
+        <!--                                    <section data-snippet="s_dynamic_snippet_products"-->
+        <!--                                             class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level s_product_product_borderless_1 o_dynamic_empty"-->
+        <!--                                             data-name="Products" style="background-image: none;"-->
+        <!--                                             data-product-category-id="current"-->
+        <!--                                             data-number-of-records="16" data-filter-id="3"-->
+        <!--                                             data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"-->
+        <!--                                             data-carousel-interval="5000">-->
+        <!--                                        <div class="o_not_editable container-fluid">-->
+        <!--                                            <div class="css_non_editable_mode_hidden">-->
+        <!--                                                <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">-->
+        <!--                                                    Your Dynamic Snippet will be displayed here... This message is-->
+        <!--                                                    displayed-->
+        <!--                                                    because-->
+        <!--                                                    you-->
+        <!--                                                    did not provided both a filter and a template to use.-->
+        <!--                                                    <br/>-->
+        <!--                                                </div>-->
+        <!--                                            </div>-->
+        <!--                                            <div class="dynamic_snippet_template"/>-->
+        <!--                                        </div>-->
+        <!--                                    </section>-->
+        <!--                                </div>-->
+        <!--                            </section>-->
+        <!--                            <section data-snippet="s_dynamic_snippet_products"-->
+        <!--                                     class="s_dynamic_snippet_products s_dynamic o_colored_level s_product_product_borderless_1 pb64 pt0 d-lg-none o_snippet_desktop_invisible o_dynamic_empty"-->
+        <!--                                     data-name="Products" data-product-category-id="all" data-number-of-records="16"-->
+        <!--                                     data-filter-id="2"-->
+        <!--                                     data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"-->
+        <!--                                     data-carousel-interval="5000" style="background-image: none; position: relative;"-->
+        <!--                                     data-invisible="0">-->
+        <!--                                <div class="o_not_editable container-fluid">-->
+        <!--                                    <div class="css_non_editable_mode_hidden">-->
+        <!--                                        <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">-->
+        <!--                                            Your Dynamic Snippet will be displayed here... This message is displayed-->
+        <!--                                            because you did not provide both a filter and a template to use.-->
+        <!--                                            <br/>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="dynamic_snippet_template"/>-->
+        <!--                                </div>-->
+        <!--                            </section>-->
+        <!--                            <br/>-->
+        <!--                            <br/>-->
+        <!--                            <div class="row align-items-stretch" style="">-->
+        <!--                                <div class="o_colored_level col-lg-6" style="">-->
+        <!--                                    <img src="/web/image/website.s_image_text_default_image"-->
+        <!--                                         class="img img-fluid mx-auto" alt="" loading="lazy" data-original-id="843"-->
+        <!--                                         data-original-src="/website/static/src/img/snippets_demo/s_image_text.jpg"-->
+        <!--                                         data-mimetype="image/jpeg" data-bs-original-title="" title=""-->
+        <!--                                         aria-describedby="tooltip666390" style=""/>-->
+        <!--                                </div>-->
+        <!--                                <div class="o_colored_level col-lg-4 offset-lg-2" style="">-->
+        <!--                                    <p>-->
+        <!--                                        <span style="font-size: 18px;"><span class="oe-tabs"-->
+        <!--                                                                             style="width: 20px;"></span>​New Arrivals-->
+        <!--                                        </span>-->
+        <!--                                        <br/>-->
+        <!--                                    </p>-->
+        <!--                                    <h3><span class="oe-tabs" style="width: 20px;"></span>​Name-->
+        <!--                                        <br/>-->
+        <!--                                    </h3>-->
+        <!--                                    <p>-->
+        <!--                                        &lt;!&ndash;                                        <a href="http://xc" class="mb-2 btn btn-primary" data-bs-original-title=""&ndash;&gt;-->
+        <!--                                        &lt;!&ndash;                                           title="" style="">&ndash;&gt;-->
+        <!--                                        &lt;!&ndash;                                            <span style="font-size: 24px;">&ndash;&gt;-->
+        <!--                                        &lt;!&ndash;                                                <font class="text-black bg-white">Order Now</font>&ndash;&gt;-->
+        <!--                                        &lt;!&ndash;                                            </span>&ndash;&gt;-->
+        <!--                                        &lt;!&ndash;                                        </a>&ndash;&gt;-->
+        <!--                                        &lt;!&ndash;                                        <br/>&ndash;&gt;-->
+        <!--                                         <div class="s_donation o_colored_level" data-name="Donation Button"-->
+        <!--                                                     style="text-align: left;"-->
+        <!--                                                     data-donation-email="info@yourcompany.example.com"-->
+        <!--                                                     data-custom-amount="freeAmount" data-prefilled-options="true"-->
+        <!--                                                     data-descriptions="true"-->
+        <!--                                                     data-donation-amounts="[&quot;10&quot;, &quot;25&quot;, &quot;50&quot;, &quot;100&quot;]"-->
+        <!--                                                     data-minimum-amount="5" data-maximum-amount="100"-->
+        <!--                                                     data-slider-step="5" data-default-amount="25"-->
+        <!--                                                     data-snippet="s_donation_button">-->
+        <!--                                                    <form class="s_donation_form" action="/donation/pay" method="post"-->
+        <!--                                                          enctype="multipart/form-data">-->
+        <!--                                                        <span id="s_donation_description_inputs">-->
+        <!--                                                            <input type="hidden"-->
+        <!--                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"-->
+        <!--                                                                   name="donation_descriptions"-->
+        <!--                                                                   value="One year in high school."/>-->
+        <!--                                                            <input type="hidden"-->
+        <!--                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"-->
+        <!--                                                                   name="donation_descriptions"-->
+        <!--                                                                   value="One year in elementary school."/>-->
+        <!--                                                            <input type="hidden"-->
+        <!--                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"-->
+        <!--                                                                   name="donation_descriptions"-->
+        <!--                                                                   value="Caring for a baby for 1 month."/>-->
+        <!--                                                            <input type="hidden"-->
+        <!--                                                                   class="o_translatable_input_hidden d-block mb-1 w-100"-->
+        <!--                                                                   name="donation_descriptions"-->
+        <!--                                                                   value="A year of cultural awakening."/>-->
+        <!--                                                        </span>-->
+        <!--                                                        <a href="http://P;ace order" type="button"-->
+        <!--                                                           class="s_donation_donate_btn mb-2 btn btn-outline-custom text-black bg-o-color-4 btn-lg"-->
+        <!--                                                           data-bs-original-title="" title=""-->
+        <!--                                                           style="border-width: 1px; border-style: solid;">-->
+        <!--                                                            <span style="font-size: 16px;">Order Now</span>-->
+        <!--                                                        </a>-->
+        <!--                                                    </form>-->
+        <!--                                                </div>-->
+        <!--                                    </p>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                            <h1><span class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                         style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​Our Blogs-->
+        <!--                                <br/>-->
+        <!--                            </h1>-->
+        <!--                            <p><span class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                        style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​<span-->
+        <!--                                    class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
+        <!--                                                                                       style="width: 40px;"></span>​Find-->
+        <!--                                a bright ideal to suit your taste with our great selection-->
+        <!--                                <br/>-->
+        <!--                            </p>-->
+        <!--                            <section data-snippet="s_dynamic_snippet_products"-->
+        <!--                                     class="s_dynamic_snippet_products s_dynamic pt32 pb32 o_colored_level s_product_product_borderless_1 o_dynamic_empty"-->
+        <!--                                     data-name="Products" style="background-image: none;"-->
+        <!--                                     data-product-category-id="current"-->
+        <!--                                     data-number-of-records="16" data-filter-id="3"-->
+        <!--                                     data-template-key="website_sale.dynamic_filter_template_product_product_borderless_1"-->
+        <!--                                     data-carousel-interval="5000">-->
+        <!--                                <div class="o_not_editable container-fluid">-->
+        <!--                                    <div class="css_non_editable_mode_hidden">-->
+        <!--                                        <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">-->
+        <!--                                            Your Dynamic Snippet will be displayed here... This message is displayed-->
+        <!--                                            because-->
+        <!--                                            you-->
+        <!--                                            did not provided both a filter and a template to use.-->
+        <!--                                            <br/>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="dynamic_snippet_template"/>-->
+        <!--                                </div>-->
+        <!--                            </section>-->
+        <!--                            <div class="row" style="margin: 6px">-->
+        <!--                                <div class="col-39 Rectangle-47" style="text-align: center;">-->
+        <!--                                    <span class="LA-PALMA-is-the-only-destination-to-enjoy-the-palm-life-A-breath-taking-concept-inspired-by-tropica">-->
+        <!--                                        Our Instagram-->
+        <!--                                    </span>-->
+        <!--                                    <br/>-->
+        <!--                                    <span>Follow our store on Instagram</span>-->
+        <!--                                    <br/>-->
+        <!--                                    <button>-->
+        <!--                                        Follow Us-->
+        <!--                                        <a href="https://www.instagram.com/softguidetechnology"/>-->
+        <!--                                    </button>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </section>-->
+        <!--                </t>-->
+        <!--            </xpath>-->
+        <!--        </template>-->
 
 
         <template id="website_sale.address" name="Address Management">

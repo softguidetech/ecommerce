@@ -275,51 +275,42 @@
 
         <template id="website_sale.reduction_code" inherit_id="website_sale.total" name="Promo Code">
             <xpath expr="//div[@id='cart_total']//table/tr[last()]" position="after">
-                <!--                <tr t-if="not hide_promotions">-->
-                <!--                    <td colspan="3" class="text-center text-xl-end border-0">-->
-                <!--                        <span class=''>-->
-                <!--                            <t t-set='force_coupon'-->
-                <!--                               t-value="website_sale_order.pricelist_id.code or request.params.get('code_not_available')"/>-->
-                <!--                            <t t-if="not force_coupon">-->
-                <!--                                <a href="#" class="show_coupon">I have a promo code</a>-->
-                <!--                            </t>-->
-                <!--                            <div t-attf-class="coupon_form #{not force_coupon and 'd-none'}">-->
-                <!--                                <t t-call="website_sale.coupon_form"/>-->
-                <!--                            </div>-->
-                <!--                        </span>-->
-                <!--                    </td>-->
-                <!--                </tr>-->
             </xpath>
         </template>
 
         <template id="website_sale.short_cart_summary" name="Short Cart right column">
             <div class="card js_cart_summary" t-if="website_sale_order and website_sale_order.website_order_line">
-                <div style="background-color: rgb(240, 224, 122);text-align: center;">
-                    <!--                    class="card-body"-->
+                <div style="background-color: rgb(240, 224, 122); text-align: center;">
                     <h4 class="d-none d-xl-block" style="text-align: center;">Cart Total</h4>
                     <hr class="d-none d-xl-block"/>
+                    <!-- Cart Total Content -->
                     <div>
                         <t t-call="website_sale.total">
                             <t t-set="no_rowspan" t-value="1"/>
                         </t>
-                        <t t-set="redirect_to_sign_in"
-                           t-value="website.account_on_checkout == 'mandatory' and website.is_public_user()"/>
-                        <t t-set="redirect_url"
-                           t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/checkout?express=1'"/>
-                        <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
-                           class="btn btn-outline-primary d-none d-xl-inline-block mx-auto"
-                           t-attf-href="{{redirect_url}}">
-                            <t t-if="redirect_to_sign_in">
-                                <span>Sign In</span>
-                                <span class="fa fa-sign-in"/>
-                            </t>
-                            <t t-else="">
-                                <span>Check Out</span>
-                                <!--                                <span class="fa fa-chevron-right"/>-->
-                            </t>
-                        </a>
                     </div>
                 </div>
+
+                <div></div>
+                <!-- Check Out Button -->
+                <div style="width: 100%;">
+                    <t t-set="redirect_to_sign_in"
+                       t-value="website.account_on_checkout == 'mandatory' and website.is_public_user()"/>
+                    <t t-set="redirect_url"
+                       t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/checkout?express=1'"/>
+                    <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
+                       class="btn btn-outline-primary d-none d-xl-inline-block mx-auto" style="width: 100%;"
+                       t-attf-href="{{redirect_url}}">
+                        <t t-if="redirect_to_sign_in">
+                            <span>Sign In</span>
+                            <span class="fa fa-sign-in"/>
+                        </t>
+                        <t t-else="">
+                            <span>Check Out</span>
+                        </t>
+                    </a>
+                </div>
+                <!--                </div>-->
             </div>
         </template>
 
@@ -400,35 +391,6 @@
                                         <div class="d-xl-none mb-2" id="o_cart_summary">
                                             <t t-call="website_sale.short_cart_summary"/>
                                         </div>
-                                        <!--                                        <div class="d-flex justify-content-between">-->
-                                        <!--                                            <div>-->
-                                        <!--                                                <a role="button" href="/shop" class="btn btn-secondary mb32">-->
-                                        <!--                                                    <span class="fa fa-chevron-left"/>-->
-                                        <!--                                                    <span>Continue-->
-                                        <!--                                                        <span class="d-none d-md-inline">Shopping</span>-->
-                                        <!--                                                    </span>-->
-                                        <!--                                                </a>-->
-                                        <!--                                            </div>-->
-                                        <!--                                            <t t-set="redirect_to_sign_in"-->
-                                        <!--                                               t-value="website.account_on_checkout == 'mandatory' and website.is_public_user()"/>-->
-                                        <!--                                            <t t-set="redirect_url"-->
-                                        <!--                                               t-value="'/web/login?redirect=/shop/checkout' if redirect_to_sign_in else '/shop/checkout?express=1'"/>-->
-                                        <!--                                            <div class="d-flex flex-column"-->
-                                        <!--                                                 t-if="website_sale_order and website_sale_order.website_order_line">-->
-                                        <!--                                                <a class="btn btn-primary float-end" role="button"-->
-                                        <!--                                                   t-attf-href="{{redirect_url}}">-->
-                                        <!--                                                    <t t-if="redirect_to_sign_in">-->
-                                        <!--                                                        <span>Sign In</span>-->
-                                        <!--                                                        <span class="fa fa-sign-in"/>-->
-                                        <!--                                                    </t>-->
-                                        <!--                                                    <t t-else="">-->
-                                        <!--                                                        <span>Process Checkout</span>-->
-                                        <!--                                                        <span class="fa fa-chevron-right"/>-->
-                                        <!--                                                    </t>-->
-                                        <!--                                                </a>-->
-                                        <!--                                                <t t-call="payment.express_checkout"/>-->
-                                        <!--                                            </div>-->
-                                        <!--                                        </div>-->
                                         <div class="oe_structure" id="oe_structure_website_sale_cart_1"/>
                                     </div>
                                 </div>
@@ -595,52 +557,6 @@
             </div>
         </template>
 
-
-        <!--        <template id="website_sale.wizard_checkout" name="Wizard Checkout">-->
-        <!--            <t t-set="website_sale_order" t-value="website.sale_get_order()"/>-->
-        <!--            <div class="row">-->
-        <!--                <section class="s_text_block o_colored_level pb0 pt0" data-snippet="s_text_block" data-name="Text"-->
-        <!--                         style="background-color: rgb(240, 224, 122); background-image: none;">-->
-        <!--                    <div class="s_allow_columns container">-->
-        <!--                        <h2>-->
-        <!--                            <strong>-->
-        <!--                                <span style="font-size: 24px;">​</span>-->
-        <!--                            </strong>-->
-        <!--                            <span class="oe-tabs" style="width: 17.0333px;"/>-->
-        <!--                            <strong>-->
-        <!--                                <span style="font-size: 24px;">​<span class="oe-tabs" style="width: 32.0833px;"/>​<span-->
-        <!--                                        class="oe-tabs" style="width: 40px;"/>​Product-->
-        <!--                                </span>-->
-        <!--                            </strong>-->
-        <!--                            <span class="oe-tabs" style="width: 29.05px;"/>-->
-        <!--                            <strong>-->
-        <!--                                <span style="font-size: 24px;">​</span>-->
-        <!--                            </strong>-->
-        <!--                            <span class="oe-tabs" style="width: 24.1167px;"/>-->
-        <!--                            <strong>-->
-        <!--                                <span style="font-size: 24px;">​</span>-->
-        <!--                            </strong>-->
-        <!--                            <span class="oe-tabs" style="width: 24.1167px;"/>-->
-        <!--                            <span class="oe-tabs" style="width: 32.0833px;"></span>​<span class="oe-tabs"-->
-        <!--                                                                                          style="width: 40px;"></span>​<span-->
-        <!--                                class="oe-tabs" style="width: 40px;"></span>​<span class="oe-tabs"-->
-        <!--                                                                                   style="width: 40px;"></span>​-->
-        <!--                            <strong>-->
-        <!--                                <span style="font-size: 24px;">​Price</span>-->
-        <!--                            </strong>-->
-        <!--                            <span class="oe-tabs" style="width: 8.03333px;"/>-->
-        <!--                            <strong>-->
-        <!--                                <span style="font-size: 24px;">​&amp;nbsp;&amp;nbsp;Quantity&amp;nbsp;&amp;nbsp;-->
-        <!--                                    Subtotal</span>&amp;nbsp;-->
-        <!--                            </strong>-->
-        <!--                            <br/>-->
-        <!--                        </h2>-->
-        <!--                    </div>-->
-        <!--                </section>-->
-        <!--            </div>-->
-        <!--        </template>-->
-
-
         <template id="website_sale.cart_lines" name="Shopping Cart Lines">
             <div t-if="not website_sale_order or not website_sale_order.website_order_line"
                  class="js_cart_lines alert alert-info">
@@ -655,19 +571,6 @@
             <table t-if="website_sale_order and website_sale_order.website_order_line"
                    class="mb16 table table-striped table-sm js_cart_lines" id="cart_products">
                 <t t-set="show_qty" t-value="is_view_active('website_sale.product_quantity')"/>
-                <!--                <thead>-->
-                <!--                    <tr>-->
-                <!--                        <th class="td-img">Product</th>-->
-                <!--                        <th></th>-->
-                <!--                        <th class="text-center td-qty">-->
-                <!--                            <t t-if="show_qty">-->
-                <!--                                Quantity-->
-                <!--                            </t>-->
-                <!--                        </th>-->
-                <!--                        <th class="text-center td-price">Price</th>-->
-                <!--                        <th class="text-center td-action"></th>-->
-                <!--                    </tr>-->
-                <!--                </thead>-->
                 <tbody>
                     <t t-foreach="website_sale_order.website_order_line" t-as="line">
                         <tr t-att-class="'optional_product info' if line.linked_line_id else None">
@@ -690,9 +593,6 @@
                                             <strong t-field="line.name_short"/>
                                         </t>
                                     </div>
-                                    <!--                                    <t t-call="website_sale.cart_line_description_following_lines">-->
-                                    <!--                                        <t t-set="div_class" t-value="'d-none d-md-block'"/>-->
-                                    <!--                                    </t>-->
                                 </td>
                             </t>
                             <td class="text-center td-price" name="price">
@@ -721,57 +621,6 @@
                                     </t>
                                 </small>
                             </td>
-                            <!--                            <td class="text-center td-qty">-->
-                            <!--                                <div class="css_quantity input-group mx-auto justify-content-center">-->
-                            <!--                                    <t t-if="not line._is_not_sellable_line()">-->
-                            <!--                                        <t t-if="show_qty">-->
-                            <!--                                            <a t-attf-href="#"-->
-                            <!--                                               class="btn btn-link js_add_cart_json d-none d-md-inline-block"-->
-                            <!--                                               aria-label="Remove one" title="Remove one">-->
-                            <!--                                                <i class="fa fa-minus"></i>-->
-                            <!--                                            </a>-->
-                            <!--                                            <input type="text" class="js_quantity form-control quantity"-->
-                            <!--                                                   t-att-data-line-id="line.id"-->
-                            <!--                                                   t-att-data-product-id="line.product_id.id"-->
-                            <!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
-                            <!--                                            <t t-if="line._get_shop_warning(clear=False)">-->
-                            <!--                                                <a t-attf-href="#" class="btn btn-link">-->
-                            <!--                                                    <i class='fa fa-warning text-warning'-->
-                            <!--                                                       t-att-title="line._get_shop_warning()" role="img"-->
-                            <!--                                                       aria-label="Warning"/>-->
-                            <!--                                                </a>-->
-                            <!--                                            </t>-->
-                            <!--                                            <a t-else='' t-attf-href="#"-->
-                            <!--                                               class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"-->
-                            <!--                                               aria-label="Add one" title="Add one">-->
-                            <!--                                                <i class="fa fa-plus"></i>-->
-                            <!--                                            </a>-->
-                            <!--                                        </t>-->
-                            <!--                                        <t t-else="">-->
-                            <!--                                            <input type="hidden" class="js_quantity form-control quantity"-->
-                            <!--                                                   t-att-data-line-id="line.id"-->
-                            <!--                                                   t-att-data-product-id="line.product_id.id"-->
-                            <!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
-                            <!--                                        </t>-->
-                            <!--                                    </t>-->
-                            <!--                                    <t t-else="">-->
-                            <!--                                        <span class="text-muted w-100" t-esc="int(line.product_uom_qty)"/>-->
-                            <!--                                        <input-->
-                            <!--                                                type="hidden"-->
-                            <!--                                                t-att-data-line-id="line.id"-->
-                            <!--                                                t-att-data-product-id="line.product_id.id"-->
-                            <!--                                                t-att-value="line.product_uom_qty"-->
-                            <!--                                        />-->
-                            <!--                                    </t>-->
-
-                            <!--                                    &lt;!&ndash;                                    <t t-else="">&ndash;&gt;-->
-                            <!--                                    &lt;!&ndash;                                        <span class="text-muted w-100" t-esc="int(line.product_uom_qty)"/>&ndash;&gt;-->
-                            <!--                                    &lt;!&ndash;                                        <input type="hidden" class&ndash;&gt;-->
-                            <!--                                    &lt;!&ndash;                                        "js_quantity form-control quantity" t-att-data-line-id="line.id"&ndash;&gt;-->
-                            <!--                                    &lt;!&ndash;                                        t-att-data-product-id="line.product_id.id" t-att-value="line.product_uom_qty" />&ndash;&gt;-->
-                            <!--                                    &lt;!&ndash;                                    </t>&ndash;&gt;-->
-                            <!--                                </div>-->
-                            <!--                            </td>-->
                             <td class="text-center td-qty">
                                 <div class="css_quantity input-group mx-auto justify-content-center">
                                     <t t-if="show_qty">
@@ -801,256 +650,7 @@
                         </tr>
                     </t>
                 </tbody>
-                <!--                <tbody>-->
-                <!--                    <t t-foreach="website_sale_order.website_order_line" t-as="line">-->
-                <!--                        <tr t-att-class="'optional_product info' if line.linked_line_id else None">-->
-                <!--                            <td t-if="not line.product_id" colspan="2" class='td-img'/>-->
-                <!--                            <t t-else="">-->
-                <!--                                <td align="center" class='td-img'>-->
-                <!--                                    <span t-if="line._is_not_sellable_line() and line.product_id.image_128">-->
-                <!--                                        <img t-att-src="image_data_uri(line.product_id.image_128)"-->
-                <!--                                             class="img o_image_64_max rounded"-->
-                <!--                                             t-att-alt="line.name_short"/>-->
-                <!--                                    </span>-->
-                <!--                                    <span t-else=""-->
-                <!--                                          t-field="line.product_id.image_128"-->
-                <!--                                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"-->
-                <!--                                    />-->
-                <!--                                </td>-->
-                <!--                                <td class='td-product_name'>-->
-                <!--                                    <div>-->
-                <!--                                        <t t-call="website_sale.cart_line_product_link">-->
-                <!--                                            <strong t-field="line.name_short"/>-->
-                <!--                                        </t>-->
-                <!--                                    </div>-->
-                <!--                                    <t t-call="website_sale.cart_line_description_following_lines">-->
-                <!--                                        <t t-set="div_class" t-value="'d-none d-md-block'"/>-->
-                <!--                                    </t>-->
-                <!--                                </td>-->
-                <!--                            </t>-->
-                <!--                            <td class="text-center td-qty">-->
-                <!--                                <div class="css_quantity input-group mx-auto justify-content-center">-->
-                <!--                                    <t t-if="not line._is_not_sellable_line()">-->
-                <!--                                        <t t-if="show_qty">-->
-                <!--                                            <a t-attf-href="#"-->
-                <!--                                               class="btn btn-link js_add_cart_json d-none d-md-inline-block"-->
-                <!--                                               aria-label="Remove one" title="Remove one">-->
-                <!--                                                <i class="fa fa-minus"></i>-->
-                <!--                                            </a>-->
-                <!--                                            <input type="text" class="js_quantity form-control quantity"-->
-                <!--                                                   t-att-data-line-id="line.id"-->
-                <!--                                                   t-att-data-product-id="line.product_id.id"-->
-                <!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
-                <!--                                            <t t-if="line._get_shop_warning(clear=False)">-->
-                <!--                                                <a t-attf-href="#" class="btn btn-link">-->
-                <!--                                                    <i class='fa fa-warning text-warning'-->
-                <!--                                                       t-att-title="line._get_shop_warning()" role="img"-->
-                <!--                                                       aria-label="Warning"/>-->
-                <!--                                                </a>-->
-                <!--                                            </t>-->
-                <!--                                            <a t-else='' t-attf-href="#"-->
-                <!--                                               class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"-->
-                <!--                                               aria-label="Add one" title="Add one">-->
-                <!--                                                <i class="fa fa-plus"></i>-->
-                <!--                                            </a>-->
-                <!--                                        </t>-->
-                <!--                                        <t t-else="">-->
-                <!--                                            <input type="hidden" class="js_quantity form-control quantity"-->
-                <!--                                                   t-att-data-line-id="line.id"-->
-                <!--                                                   t-att-data-product-id="line.product_id.id"-->
-                <!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
-                <!--                                        </t>-->
-                <!--                                    </t>-->
-                <!--                                    <t t-else="">-->
-                <!--                                        <span class="text-muted w-100" t-esc="int(line.product_uom_qty)"/>-->
-                <!--                                        <input type="hidden" class="js_quantity form-control quantity"-->
-                <!--                                               t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id"-->
-                <!--                                               t-att-value="line.product_uom_qty"/>-->
-                <!--                                    </t>-->
-                <!--                                </div>-->
-                <!--                            </td>-->
-                <!--                            <td class="text-center td-price" name="price">-->
-                <!--                                <t t-set="combination"-->
-                <!--                                   t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>-->
-                <!--                                <t t-set="combination_info"-->
-                <!--                                   t-value="line.product_id.product_tmpl_id._get_combination_info(combination, pricelist=website_sale_order.pricelist_id, add_qty=line.product_uom_qty)"/>-->
-
-                <!--                                <t groups="account.group_show_line_subtotals_tax_excluded">-->
-                <!--                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"-->
-                <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-                <!--                                </t>-->
-                <!--                                <t groups="account.group_show_line_subtotals_tax_included">-->
-                <!--                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"-->
-                <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-                <!--                                </t>-->
-                <!--                                <t t-if="line.discount">-->
-                <!--                                    <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"-->
-                <!--                                         t-esc="combination_info['list_price']"-->
-                <!--                                         t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-                <!--                                </t>-->
-                <!--                                <small t-if="not line._is_not_sellable_line() and line.product_id.base_unit_price"-->
-                <!--                                       class="cart_product_base_unit_price d-block text-muted"-->
-                <!--                                       groups="website_sale.group_show_uom_price">-->
-                <!--                                    <t t-call='website_sale.base_unit_price'>-->
-                <!--                                        <t t-set='product' t-value='line.product_id'/>-->
-                <!--                                    </t>-->
-                <!--                                </small>-->
-                <!--                            </td>-->
-                <!--                            <td class="td-action">-->
-                <!--                                <a href='#' aria-label="Remove from cart" title="Remove from cart"-->
-                <!--                                   class='js_delete_product no-decoration'>-->
-                <!--                                    <small>-->
-                <!--                                        <i class='fa fa-trash-o'></i>-->
-                <!--                                    </small>-->
-                <!--                                </a>-->
-                <!--                            </td>-->
-                <!--                        </tr>-->
-                <!--                    </t>-->
-                <!--                </tbody>-->
             </table>
         </template>
-
-        <!--        <template id="cart_lines" name="Shopping Cart Lines">-->
-        <!--            <div t-if="not website_sale_order or not website_sale_order.website_order_line"-->
-        <!--                 class="js_cart_lines alert alert-info">-->
-        <!--                Your cart is empty!-->
-        <!--            </div>-->
-        <!--            <t t-if='website_sale_order'>-->
-        <!--                <div t-if='website_sale_order._get_shop_warning(clear=False)' class="alert alert-warning" role="alert">-->
-        <!--                    <strong>Warning!</strong>-->
-        <!--                    <t t-esc='website_sale_order._get_shop_warning()'/>-->
-        <!--                </div>-->
-        <!--            </t>-->
-        <!--            <table t-if="website_sale_order and website_sale_order.website_order_line"-->
-        <!--                   class="mb16 table table-striped table-sm js_cart_lines" id="cart_products">-->
-        <!--                <t t-set="show_qty" t-value="is_view_active('website_sale.product_quantity')"/>-->
-        <!--                <thead>-->
-        <!--                    <tr>-->
-        <!--                        <th class="td-img">Product</th>-->
-        <!--                        <th>Product Name</th>-->
-        <!--                        <th class="text-center td-qty">-->
-        <!--                            <t t-if="show_qty">-->
-        <!--                                Quantity-->
-        <!--                            </t>-->
-        <!--                        </th>-->
-        <!--                        <th class="text-center td-price">Price</th>-->
-        <!--                        <th class="text-center td-subtotal">Subtotal</th>-->
-        <!--                        <th class="text-center td-action"></th>-->
-        <!--                    </tr>-->
-        <!--                </thead>-->
-        <!--                <tbody>-->
-        <!--                    <t t-foreach="website_sale_order.website_order_line" t-as="line">-->
-        <!--                        <tr t-att-class="'optional_product info' if line.linked_line_id else None">-->
-        <!--                            <td t-if="not line.product_id" colspan="2" class='td-img'/>-->
-        <!--                            <t t-else="">-->
-        <!--                                <td align="center" class='td-img'>-->
-        <!--                                    <span t-if="line._is_not_sellable_line() and line.product_id.image_128">-->
-        <!--                                        <img t-att-src="image_data_uri(line.product_id.image_128)"-->
-        <!--                                             class="img o_image_64_max rounded"-->
-        <!--                                             t-att-alt="line.name_short"/>-->
-        <!--                                    </span>-->
-        <!--                                    <span t-else=""-->
-        <!--                                          t-field="line.product_id.image_128"-->
-        <!--                                          t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}"-->
-        <!--                                    />-->
-        <!--                                </td>-->
-        <!--                                <td class='td-product_name'>-->
-        <!--                                    <div>-->
-        <!--                                        <t t-call="website_sale.cart_line_product_link">-->
-        <!--                                            <strong t-field="line.name_short"/>-->
-        <!--                                        </t>-->
-        <!--                                    </div>-->
-        <!--                                    <t t-call="website_sale.cart_line_description_following_lines">-->
-        <!--                                        <t t-set="div_class" t-value="'d-none d-md-block'"/>-->
-        <!--                                    </t>-->
-        <!--                                </td>-->
-        <!--                            </t>-->
-        <!--                            <td class="text-center td-qty">-->
-        <!--                                <div class="css_quantity input-group mx-auto justify-content-center">-->
-        <!--                                    <t t-if="not line._is_not_sellable_line()">-->
-        <!--                                        <t t-if="show_qty">-->
-        <!--                                            <a t-attf-href="#"-->
-        <!--                                               class="btn btn-link js_add_cart_json d-none d-md-inline-block"-->
-        <!--                                               aria-label="Remove one" title="Remove one">-->
-        <!--                                                <i class="fa fa-minus"></i>-->
-        <!--                                            </a>-->
-        <!--                                            <input type="text" class="js_quantity form-control quantity"-->
-        <!--                                                   t-att-data-line-id="line.id"-->
-        <!--                                                   t-att-data-product-id="line.product_id.id"-->
-        <!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
-        <!--                                            <t t-if="line._get_shop_warning(clear=False)">-->
-        <!--                                                <a t-attf-href="#" class="btn btn-link">-->
-        <!--                                                    <i class='fa fa-warning text-warning'-->
-        <!--                                                       t-att-title="line._get_shop_warning()" role="img"-->
-        <!--                                                       aria-label="Warning"/>-->
-        <!--                                                </a>-->
-        <!--                                            </t>-->
-        <!--                                            <a t-else='' t-attf-href="#"-->
-        <!--                                               class="btn btn-link float_left js_add_cart_json d-none d-md-inline-block"-->
-        <!--                                               aria-label="Add one" title="Add one">-->
-        <!--                                                <i class="fa fa-plus"></i>-->
-        <!--                                            </a>-->
-        <!--                                        </t>-->
-        <!--                                        <t t-else="">-->
-        <!--                                            <input type="hidden" class="js_quantity form-control quantity"-->
-        <!--                                                   t-att-data-line-id="line.id"-->
-        <!--                                                   t-att-data-product-id="line.product_id.id"-->
-        <!--                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>-->
-        <!--                                        </t>-->
-        <!--                                    </t>-->
-        <!--                                    <t t-else="">-->
-        <!--                                        <span class="text-muted w-100" t-esc="int(line.product_uom_qty)"/>-->
-        <!--                                        <input type="hidden" class-->
-        <!--                                        "js_quantity form-control quantity" t-att-data-line-id="line.id"-->
-        <!--                                        t-att-data-product-id="line.product_id.id" t-att-value="line.product_uom_qty" />-->
-        <!--                                    </t>-->
-        <!--                                </div>-->
-        <!--                            </td>-->
-        <!--                            <td class="text-center td-price" name="price">-->
-        <!--                                <t t-set="combination"-->
-        <!--                                   t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>-->
-        <!--                                <t t-set="combination_info"-->
-        <!--                                   t-value="line.product_id.product_tmpl_id._get_combination_info(combination, pricelist=website_sale_order.pricelist_id, add_qty=line.product_uom_qty)"/>-->
-        <!--                                <t groups="account.group_show_line_subtotals_tax_excluded">-->
-        <!--                                    <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;"-->
-        <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-        <!--                                </t>-->
-        <!--                                <t groups="account.group_show_line_subtotals_tax_included">-->
-        <!--                                    <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;"-->
-        <!--                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-        <!--                                </t>-->
-        <!--                                <t t-if="line.discount">-->
-        <!--                                    <del t-attf-class="#{'text-danger mr8'}" style="white-space: nowrap;"-->
-        <!--                                         t-esc="combination_info['list_price']"-->
-        <!--                                         t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-        <!--                                </t>-->
-        <!--                                <small t-if="not line._is_not_sellable_line() and line.product_id.base_unit_price"-->
-        <!--                                       class="cart_product_base_unit_price d-block text-muted"-->
-        <!--                                       groups="website_sale.group_show_uom_price">-->
-        <!--                                    <t t-call='website_sale.base_unit_price'>-->
-        <!--                                        <t t-set='product' t-value='line.product_id'/>-->
-        <!--                                    </t>-->
-        <!--                                </small>-->
-        <!--                            </td>-->
-        <!--                            <td class="td-subtotal" name="subtotal">-->
-        <!--                                <t t-set="line_price_total" t-value="line.product_uom_qty * line.price_reduce_taxexcl"/>-->
-        <!--                                <span t-esc="line_price_total"-->
-        <!--                                      t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>-->
-        <!--                            </td>-->
-        <!--                            <td class="td-action">-->
-        <!--                                <a href='#' aria-label="Remove from cart" title="Remove from cart"-->
-        <!--                                   class='js_delete_product no-decoration'>-->
-        <!--                                    <small>-->
-        <!--                                        <i class='fa fa-trash-o'></i>-->
-        <!--                                    </small>-->
-        <!--                                </a>-->
-        <!--                            </td>-->
-        <!--                        </tr>-->
-        <!--                    </t>-->
-        <!--                </tbody>-->
-        <!--            </table>-->
-        <!--        </template>-->
-
-
     </data>
 </odoo>

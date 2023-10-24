@@ -9,7 +9,7 @@
                         <nav class="navbar navbar-expand-lg py-3 header-flexbox header-config"
                              style="font-family: Helvetica !important;">
                             <!-- Logo -->
-                            <div class="d-none d-lg-block flex-grow-1">
+                            <div class="d-none d-lg-block flex-grow-1"><h1><strong>Furniro</strong></h1>
 <!--                                <a class="" href="#">-->
 <!--                                    <img src="/lapalma_website/static/logo.svg"/>-->
 <!--                                </a>-->
